@@ -164,7 +164,6 @@ func New() *Goproxy {
 				DialContext: (&net.Dialer{
 					Timeout:   30 * time.Second,
 					KeepAlive: 30 * time.Second,
-					DualStack: true,
 				}).DialContext,
 				TLSClientConfig:       &tls.Config{},
 				MaxIdleConnsPerHost:   200,
@@ -820,7 +819,7 @@ func parseRawURL(rawURL string) (*url.URL, error) {
 	return u, nil
 }
 
-// appendURL appends the extraPaths to the u safely and reutrns a new instance
+// appendURL appends the extraPaths to the u safely and returns a new instance
 // of the `url.URL`.
 func appendURL(u *url.URL, extraPaths ...string) *url.URL {
 	nu := *u
